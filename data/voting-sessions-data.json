@@ -1,0 +1,16 @@
+[
+  {
+    "id": "session-1750427099661",
+    "title": "testing",
+    "description": "test",
+    "duration": 30,
+    "status": "pending",
+    "startTime": null,
+    "endTime": null,
+    "qrCodeUrl": "http://localhost:3000/rating/",
+    "votingUrl": "http://localhost:3000/rating/",
+    "votes": [],
+    "createdAt": "2025-06-20T13:44:59.661Z",
+    "createdBy": "Unknown Super Admin"
+  }
+]

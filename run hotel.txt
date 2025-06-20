@@ -1,0 +1,62 @@
+
+PS C:\Users\ipc.youssefK\Desktop\Hotels> npm run db:setup
+
+> my-v0-project@0.1.0 db:setup
+> ts-node --project tsconfig.scripts.json scripts/setup-db.ts
+
+
+🚀 Database Setup Wizard 🚀
+
+This script will help you configure your database connection.
+
+⚠️  config.yml already exists. Do you want to overwrite it? (y/N):y
+
+🔌 Database Connection Details
+---------------------------
+Database Host (default: localhost): localhost
+Database Port (default: 5432): 5432                                                                                      
+Database Name (required): hotel
+Database Username (required): postgres                                                                                   
+Database Password (will be hidden):                                                                                      
+
+✅ Configuration saved to C:\Users\ipc.youssefK\Desktop\Hotels\config.yml
+
+🔍 Testing database connection...
+✅ Successfully connected to the database!
+
+Do you want to initialize the database with default tables? (Y/n): y
+
+🚀 Initializing database...
+
+> my-v0-project@0.1.0 db:init
+> ts-node --project tsconfig.scripts.json scripts/init-db.ts
+
+Initializing database...
+✅ Database initialized successfully
+
+Default users created:
+🔑 Username: admin
+🔑 Username: superadmin
+
+Password for both accounts: admin123
+
+Please change these passwords after your first login!
+
+✨ Database initialization complete!
+
+Default users created:
+👤 Username: admin, Password: admin123
+👑 Username: superadmin, Password: admin123
+
+⚠️  IMPORTANT: Change these passwords after your first login!
+PS C:\Users\ipc.youssefK\Desktop\Hotels> npm run dev
+
+> my-v0-project@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.2.4
+   - Local:        http://localhost:3000
+   - Network:      http://172.20.224.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 4.6s

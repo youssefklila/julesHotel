@@ -1,0 +1,134 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { UserService } from '@/lib/services/user.service';
+
+// Define the expected request body type
+interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+// POST /api/auth - Authenticate a user
+export async function POST(request: NextRequest) {
+  try {
+    const body: LoginRequest = await request.json();
+    
+    // Validate required fields
+    if (!body.username || !body.password) {
+      return NextResponse.json(
+        { error: 'Username and password are required' },
+        { status: 400 }
+      );
+    }
+    
+    // Find and validate the user
+    const user = await UserService.validateCredentials(body.username, body.password);
+    
+    // User not found or invalid credentials
+    if (!user) {
+      return NextResponse.json(
+        { error: 'Invalid credentials' },
+        { status: 401 }
+      );
+    }
+    
+    // Check if user is active
+    if (!user.isActive) {
+      return NextResponse.json(
+        { 
+          error: 'Account is deactivated',
+          message: 'Your account has been deactivated. Please contact your super admin.'
+        },
+        { status: 403 }
+      );
+    }
+    
+    // Update last login
+    await UserService.updateLastLogin(user.id);
+    
+    // Return user info without password
+    const { password, ...userWithoutPassword } = user;
+    
+    // Create the response
+    const response = NextResponse.json({
+      user: userWithoutPassword,
+      success: true
+    });
+    
+    // Set secure cookies based on user role
+    const cookieOptions = {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax' as const,
+      maxAge: 60 * 60 * 24, // 24 hours
+      path: '/',
+    };
+
+    if (user.role === 'admin') {
+      // Set HTTP-only cookies for admin authentication
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminAuth',
+        value: 'true',
+        httpOnly: true,
+      });
+      
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminUser',
+        value: user.username,
+        httpOnly: false, // Allow client-side access
+      });
+      
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminRole',
+        value: user.role,
+        httpOnly: true,
+      });
+    } else if (user.role === 'superadmin') {
+      // Set super admin cookies
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'superAdminAuth',
+        value: 'true',
+        httpOnly: true,
+      });
+      
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'superAdminUser',
+        value: user.username,
+        httpOnly: false, // Allow client-side access
+      });
+      
+      // Also set admin cookies for compatibility
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminAuth',
+        value: 'true',
+        httpOnly: true,
+      });
+      
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminUser',
+        value: user.username,
+        httpOnly: false,
+      });
+      
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'adminRole',
+        value: 'superadmin',
+        httpOnly: true,
+      });
+    }
+    
+    return response;
+  } catch (error) {
+    console.error('Error authenticating user:', error);
+    return NextResponse.json(
+      { error: 'Authentication failed' },
+      { status: 500 }
+    );
+  }
+}

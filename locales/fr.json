@@ -1,0 +1,129 @@
+{
+  "languageSelector": {
+    "title": "Sélectionnez Votre Langue",
+    "subtitle": "Choisissez votre langue préférée pour continuer"
+  },
+  "lottery": {
+    "title": "Participez à notre tirage au sort !",
+    "subtitle": "Gagnez un séjour gratuit à l'Hôtel Aziza",
+    "description": "En remplissant ce questionnaire, vous serez automatiquement inscrit à notre tirage au sort trimestriel et aurez la chance de gagner un séjour gratuit de 2 nuitées en demi-pension pour deux personnes à l'Hôtel Aziza (hors juillet-août).",
+    "infoMessage": "Pour participer au tirage au sort, veuillez fournir vos informations personnelles (nom, prénom, numéro de chambre et âge). Vous pouvez également procéder à l'évaluation de manière anonyme, mais vous ne serez pas inscrit au tirage au sort.",
+    "features": {
+      "title": "Ce que vous pouvez gagner :",
+      "stay": "2 nuits d'hébergement pour 2 personnes",
+      "meals": "Demi-pension incluse (petit-déjeuner + dîner)",
+      "location": "Magnifique Hôtel Aziza",
+      "note": "Prix valable sauf juillet-août"
+    },
+    "terms": {
+      "title": "Comment ça marche :",
+      "step1": "Complétez le questionnaire d'évaluation de l'hôtel",
+      "step2": "Inscription automatique au tirage trimestriel",
+      "step3": "Les gagnants sont contactés par email",
+      "step4": "Profitez de votre séjour gratuit !"
+    },
+    "buttons": {
+      "participate": "Participer et Continuer",
+      "skip": "Passer et Continuer"
+    },
+    "disclaimer": "En participant, vous acceptez d'être contacté si vous gagnez. Aucun achat nécessaire. Conditions générales applicables."
+  },
+  "form": {
+    "title": "Évaluation des Services de l'Hôtel",
+    "description": "Veuillez évaluer votre expérience avec nos services hôteliers",
+    "personalInfo": "Veuillez fournir vos informations personnelles",
+    "submit": "Soumettre l'Évaluation",
+    "submitting": "Soumission en cours..."
+  },
+  "userInfo": {
+    "title": "Vos Informations",
+    "fullName": "Nom Complet",
+    "fullNamePlaceholder": "Entrez votre nom complet",
+    "nationality": "Nationalité",
+    "nationalityPlaceholder": "Sélectionnez votre nationalité",
+    "age": "Âge",
+    "agePlaceholder": "Entrez votre âge",
+    "tourOperator": "Comment avez-vous réservé?",
+    "tourOperatorOptions": {
+      "travelAgency": "Agence de voyage",
+      "onlineWebsite": "Site en ligne",
+      "directHotel": "Direct hôtel"
+    },
+    "roomNumber": "Numéro de Chambre",
+    "roomNumberPlaceholder": "Entrez votre numéro de chambre",
+    "optionalField": "Optionnel - Requis pour participer au tirage au sort"
+  },
+  "serviceRating": {
+    "rateService": "Comment évalueriez-vous ce service?",
+    "comments": "Commentaires (Optionnel)",
+    "commentsPlaceholder": "Partagez vos pensées sur ce service..."
+  },
+  "services": {
+    "reception": "Accueil & Réception",
+    "room": "Chambre",
+    "roomQuality": "Qualité",
+    "roomComfort": "Confort",
+    "restaurantMain": "Restaurant Principal",
+    "restaurantMainService": "Service",
+    "restaurantMainQuality": "Qualité de la Cuisine",
+    "restaurantBarbecue": "Restaurant Barbecue",
+    "restaurantBarbecueService": "Service",
+    "restaurantBarbecueQuality": "Qualité de la Cuisine",
+    "restaurantInternational": "Restaurant International et Tunisien",
+    "restaurantInternationalService": "Service",
+    "restaurantInternationalQuality": "Qualité de la Cuisine",
+    "animationDay": "Animation: Activités de la journée",
+    "animationEvening": "Animation: Soirée",
+    "bar": "Bar",
+    "pool": "Piscine",
+    "spa": "Spa",
+    "cleanliness": "Propreté"
+  },
+  "additionalQuestions": {
+    "title": "Commentaires Supplémentaires",
+    "recommend": "Recommanderiez-vous cet hôtel à d'autres personnes?",
+    "visitAgain": "Prévoyez-vous de nous rendre visite à nouveau?",
+    "overallRating": "Sur une échelle de 0 à 10, quelle note globale attribuez-vous à votre séjour?",
+    "overallRatingDescription": "(0 = Très insatisfait / 10 = Excellent séjour)",
+    "suggestions": "Avez-vous des suggestions d'amélioration?",
+    "suggestionsPlaceholder": "Veuillez partager vos suggestions ou commentaires supplémentaires..."
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "home": "Accueil",
+    "step": "Étape {{current}} sur {{total}}",
+    "toggleTheme": "Changer de thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  },
+  "thankYou": {
+    "title": "Merci pour Votre Évaluation!",
+    "message": "Nous vous remercions d'avoir pris le temps de partager votre expérience avec nous. Vos commentaires nous aident à améliorer nos services.",
+    "newFeedback": "Soumettre Une Autre Évaluation"
+  },
+  "alreadySubmitted": {
+    "title": "Évaluation Déjà Soumise",
+    "message": "Vous avez déjà soumis votre évaluation au cours des dernières 24 heures. Merci pour votre participation!",
+    "expiry": "Vous pourrez soumettre une autre évaluation après 24 heures depuis votre soumission précédente."
+  },
+  "validation": {
+    "fullNameRequired": "Le nom complet est requis",
+    "nationalityRequired": "La nationalité est requise",
+    "ageRequired": "L'âge est requis",
+    "ageInvalid": "L'âge doit être un nombre",
+    "ageMin": "Vous devez avoir au moins 18 ans",
+    "ageMax": "L'âge ne peut pas dépasser 120 ans",
+    "tourOperatorRequired": "Veuillez sélectionner au moins une option",
+    "roomNumberRequired": "Le numéro de chambre est requis",
+    "recommendRequired": "Veuillez répondre si vous nous recommanderiez",
+    "recommendInvalid": "Réponse invalide",
+    "visitAgainRequired": "Veuillez répondre si vous prévoyez de revenir",
+    "visitAgainInvalid": "Réponse invalide",
+    "ratingRequired": "Veuillez fournir une évaluation",
+    "overallRatingRequired": "Veuillez fournir une note globale"
+  }
+}

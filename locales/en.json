@@ -1,0 +1,129 @@
+{
+  "languageSelector": {
+    "title": "Select Your Language",
+    "subtitle": "Choose your preferred language to continue"
+  },
+  "lottery": {
+    "title": "Join Our Prize Draw!",
+    "subtitle": "Win a Free Stay at Hotel Aziza",
+    "description": "By completing this questionnaire, you will be automatically entered into our quarterly prize draw and have the chance to win a free 2-night stay in half-board for two people at Hotel Aziza (excluding July-August).",
+    "infoMessage": "To participate in the prize draw, please provide your personal information (name, last name, room number, and age). Alternatively, you may proceed with the rating anonymously, but you will not be entered into the prize draw.",
+    "features": {
+      "title": "What You Can Win:",
+      "stay": "2 nights accommodation for 2 people",
+      "meals": "Half-board included (breakfast + dinner)",
+      "location": "Beautiful Hotel Aziza",
+      "note": "Prize valid except July-August"
+    },
+    "terms": {
+      "title": "How It Works:",
+      "step1": "Complete the hotel rating questionnaire",
+      "step2": "Automatic entry into quarterly draw",
+      "step3": "Winners contacted by email",
+      "step4": "Enjoy your complimentary stay!"
+    },
+    "buttons": {
+      "participate": "Participate & Continue",
+      "skip": "Skip and Continue"
+    },
+    "disclaimer": "By participating, you agree to be contacted if you win. No purchase necessary. Terms and conditions apply."
+  },
+  "form": {
+    "title": "Hotel Service Rating",
+    "description": "Please rate your experience with our hotel services",
+    "personalInfo": "Please provide your personal information",
+    "submit": "Submit Feedback",
+    "submitting": "Submitting..."
+  },
+  "userInfo": {
+    "title": "Your Information",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "nationality": "Nationality",
+    "nationalityPlaceholder": "Select your nationality",
+    "age": "Age",
+    "agePlaceholder": "Enter your age",
+    "tourOperator": "How did you book?",
+    "tourOperatorOptions": {
+      "travelAgency": "Travel Agency",
+      "onlineWebsite": "Online Website",
+      "directHotel": "Direct with Hotel"
+    },
+    "roomNumber": "Room Number",
+    "roomNumberPlaceholder": "Enter your room number",
+    "optionalField": "Optional - Required for prize draw entry"
+  },
+  "serviceRating": {
+    "rateService": "How would you rate this service?",
+    "comments": "Comments (Optional)",
+    "commentsPlaceholder": "Share your thoughts about this service..."
+  },
+  "services": {
+    "reception": "Welcome & Reception",
+    "room": "Room",
+    "roomQuality": "Quality",
+    "roomComfort": "Comfort",
+    "restaurantMain": "Main Restaurant",
+    "restaurantMainService": "Service",
+    "restaurantMainQuality": "Food Quality",
+    "restaurantBarbecue": "Barbecue Restaurant",
+    "restaurantBarbecueService": "Service",
+    "restaurantBarbecueQuality": "Food Quality",
+    "restaurantInternational": "International and Tunisian Restaurant",
+    "restaurantInternationalService": "Service",
+    "restaurantInternationalQuality": "Food Quality",
+    "animationDay": "Animation: Daytime Activities",
+    "animationEvening": "Animation: Evening Entertainment",
+    "bar": "Bar",
+    "pool": "Pool",
+    "spa": "Spa",
+    "cleanliness": "Cleanliness"
+  },
+  "additionalQuestions": {
+    "title": "Additional Feedback",
+    "recommend": "Would you recommend this hotel to others?",
+    "visitAgain": "Are you planning to visit us again?",
+    "overallRating": "On a scale of 0 to 10, what overall rating would you give to your stay?",
+    "overallRatingDescription": "(0 = Very dissatisfied / 10 = Excellent stay)",
+    "suggestions": "Do you have any suggestions for improvement?",
+    "suggestionsPlaceholder": "Please share any suggestions or additional feedback..."
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "next": "Next",
+    "previous": "Previous",
+    "home": "Home",
+    "step": "Step {{current}} of {{total}}",
+    "toggleTheme": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "thankYou": {
+    "title": "Thank You for Your Feedback!",
+    "message": "We appreciate you taking the time to share your experience with us. Your feedback helps us improve our services.",
+    "newFeedback": "Submit Another Rating"
+  },
+  "alreadySubmitted": {
+    "title": "Feedback Already Submitted",
+    "message": "You have already submitted your feedback within the last 24 hours. Thank you for your participation!",
+    "expiry": "You can submit another review after 24 hours from your previous submission."
+  },
+  "validation": {
+    "fullNameRequired": "Full name is required",
+    "nationalityRequired": "Nationality is required",
+    "ageRequired": "Age is required",
+    "ageInvalid": "Age must be a number",
+    "ageMin": "You must be at least 18 years old",
+    "ageMax": "Age cannot exceed 120",
+    "tourOperatorRequired": "Please select at least one option",
+    "roomNumberRequired": "Room number is required",
+    "recommendRequired": "Please answer if you would recommend us",
+    "recommendInvalid": "Invalid response",
+    "visitAgainRequired": "Please answer if you plan to visit again",
+    "visitAgainInvalid": "Invalid response",
+    "ratingRequired": "Please provide a rating",
+    "overallRatingRequired": "Please provide an overall rating"
+  }
+}

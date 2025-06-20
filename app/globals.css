@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    /* Premium blue color */
+    --primary: 210 100% 35%;
+    --primary-foreground: 210 40% 98%;
+
+    /* White instead of purple */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220 100% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 100% 35%;
+
+    --radius: 0.75rem;
+
+    /* Premium gradients - blue only, no purple */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 100%, 35%), hsl(210, 100%, 25%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210, 100%, 35%), hsl(210, 100%, 25%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Improved form elements for accessibility */
+  input,
+  select,
+  textarea {
+    @apply text-base md:text-lg;
+  }
+
+  label {
+    @apply text-base md:text-lg font-medium;
+  }
+
+  button {
+    @apply text-base md:text-lg;
+  }
+}
+
+/* Custom animations */
+.fade-in {
+  @apply animate-fadeIn;
+}
+
+.slide-up {
+  @apply animate-slideUp;
+}
+
+/* Improved focus styles for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
+
+/* Premium UI elements */
+.premium-card {
+  @apply border-2 border-border bg-card shadow-lg hover:shadow-xl transition-shadow duration-300;
+}
+
+.premium-gradient-bg {
+  background: var(--gradient-primary);
+}
+
+/* Change gradient text to solid primary color */
+.premium-gradient-text {
+  @apply text-primary;
+}
+
+.premium-button {
+  background: var(--gradient-primary);
+  @apply hover:opacity-90 transition-opacity duration-300;
+}
+
+.premium-border {
+  @apply border-2 border-primary/30;
+}
+
+/* Smooth form transitions */
+.form-section {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Better textarea styling */
+textarea {
+  @apply transition-colors duration-200;
+}
+
+textarea:focus {
+  @apply ring-2 ring-primary ring-offset-2;
+}
+
+/* Improved label hierarchy */
+.rating-label {
+  @apply text-lg font-medium text-primary mb-2;
+}
+
+.comment-label {
+  @apply text-base text-muted-foreground mb-1;
+}

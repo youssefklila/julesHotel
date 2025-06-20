@@ -1,0 +1,422 @@
+[
+  {
+    "id": "audit-1750169692754",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:14:52.754Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750169722214",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:15:22.214Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750169727410",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:15:27.410Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750169742727",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-17T14:15:42.727Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750169966867",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-17T14:19:26.867Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750170087078",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-17T14:21:27.078Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750170361007",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:26:01.007Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750170384521",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:26:24.521Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750170436572",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:27:16.572Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750170460958",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:27:40.958Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750170462546",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:27:42.546Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750170477093",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:27:57.093Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750171721259",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:48:41.259Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171721581",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:48:41.581Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171721584",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:48:41.584Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171721587",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:48:41.587Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171721591",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:48:41.591Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171744333",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:49:04.333Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750171747841",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:49:07.841Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750171752724",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:49:12.724Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750171773551",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:49:33.551Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750171774566",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:49:34.566Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172262787",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:57:42.787Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750172295452",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:58:15.452Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750172300409",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:58:20.409Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172318711",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:58:38.711Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172345672",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:59:05.672Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172375685",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:59:35.685Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172378459",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:59:38.459Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750172387052",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:59:47.052Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750172393870",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T14:59:53.870Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172421464",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:00:21.464Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750172441584",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:00:41.584Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750172442543",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:00:42.544Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750172628970",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:03:48.970Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750172689381",
+    "action": "ADMIN_LOGIN",
+    "user": "manager",
+    "timestamp": "2025-06-17T15:04:49.381Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750172887573",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-17T15:08:07.573Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750172950692",
+    "action": "ADMIN_LOGIN",
+    "user": "manager",
+    "timestamp": "2025-06-17T15:09:10.692Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750173094880",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:11:34.880Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750173105456",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:11:45.456Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750173162586",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:12:42.586Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750173172616",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:12:52.616Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750173178967",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:12:58.967Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750173220853",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:13:40.853Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750173233527",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-17T15:13:53.527Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750174292490",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:31:32.490Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750174297664",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:31:37.664Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750174317437",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:31:57.437Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750174319542",
+    "action": "SUPER_ADMIN_LOGOUT",
+    "user": "youssef",
+    "timestamp": "2025-06-17T15:31:59.542Z",
+    "details": "Super Admin logged out"
+  },
+  {
+    "id": "audit-1750174328882",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:32:08.882Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750174335321",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-17T15:32:15.321Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750232629264",
+    "action": "DASHBOARD_ACCESS",
+    "user": "superadmin",
+    "timestamp": "2025-06-18T07:43:49.265Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750425908649",
+    "action": "ADMIN_LOGIN",
+    "user": "admin",
+    "timestamp": "2025-06-20T13:25:08.649Z",
+    "details": "Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750426076775",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:27:56.775Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750426081528",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:28:01.528Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750426373844",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:32:53.844Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750426785494",
+    "action": "SESSION_CREATED",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:39:45.494Z",
+    "details": "Created voting session: test (30 minutes) - Auto-started"
+  },
+  {
+    "id": "audit-1750426793550",
+    "action": "SESSION_CREATED",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:39:53.550Z",
+    "details": "Created voting session: tesr (30 minutes) - Auto-started"
+  },
+  {
+    "id": "audit-1750427099664",
+    "action": "VOTING_SESSION_CREATED",
+    "user": "Unknown Super Admin",
+    "timestamp": "2025-06-20T13:44:59.664Z",
+    "details": "Voting session \"testing\" created"
+  },
+  {
+    "id": "audit-1750427101236",
+    "action": "SESSION_CREATED",
+    "user": "youssef",
+    "timestamp": "2025-06-20T13:45:01.236Z",
+    "details": "Created voting session: testing (30 minutes) - Auto-started"
+  }
+]

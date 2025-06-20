@@ -1,0 +1,128 @@
+{
+  "languageSelector": {
+    "title": "Wählen Sie Ihre Sprache",
+    "subtitle": "Wählen Sie Ihre bevorzugte Sprache, um fortzufahren"
+  },
+  "lottery": {
+    "title": "Nehmen Sie an unserer Verlosung teil!",
+    "subtitle": "Gewinnen Sie einen kostenlosen Aufenthalt im Hotel Aziza",
+    "description": "Durch das Ausfüllen dieses Fragebogens werden Sie automatisch in unsere vierteljährliche Verlosung eingetragen und haben die Chance, einen kostenlosen 2-Nächte-Aufenthalt mit Halbpension für zwei Personen im Hotel Aziza zu gewinnen (ausgenommen Juli-August).",
+    "infoMessage": "Um an der Verlosung teilzunehmen, geben Sie bitte Ihre persönlichen Daten an (Name, Nachname, Zimmernummer und Alter). Alternativ können Sie die Bewertung anonym durchführen, nehmen dann jedoch nicht an der Verlosung teil.",
+    "features": {
+      "title": "Was Sie gewinnen können:",
+      "stay": "2 Übernachtungen für 2 Personen",
+      "meals": "Halbpension inklusive (Frühstück + Abendessen)",
+      "location": "Wunderschönes Hotel Aziza",
+      "note": "Preis gültig außer Juli-August"
+    },
+    "terms": {
+      "title": "So funktioniert es:",
+      "step1": "Füllen Sie den Hotelbewertungsfragebogen aus",
+      "step2": "Automatische Teilnahme an der vierteljährlichen Verlosung",
+      "step3": "Gewinner werden per E-Mail kontaktiert",
+      "step4": "Genießen Sie Ihren kostenlosen Aufenthalt!"
+    },
+    "buttons": {
+      "participate": "Teilnehmen & Fortfahren",
+      "skip": "Überspringen und Fortfahren"
+    },
+    "disclaimer": "Mit der Teilnahme erklären Sie sich damit einverstanden, kontaktiert zu werden, falls Sie gewinnen. Kein Kauf notwendig. Es gelten die Teilnahmebedingungen."
+  },
+  "form": {
+    "title": "Hotelbewertung",
+    "description": "Bitte bewerten Sie Ihre Erfahrung mit unseren Hoteldienstleistungen",
+    "personalInfo": "Bitte geben Sie Ihre persönlichen Daten ein",
+    "submit": "Bewertung Abschicken",
+    "submitting": "Wird gesendet..."
+  },
+  "userInfo": {
+    "title": "Ihre Informationen",
+    "fullName": "Vollständiger Name",
+    "fullNamePlaceholder": "Geben Sie Ihren vollständigen Namen ein",
+    "nationality": "Nationalität",
+    "nationalityPlaceholder": "Wählen Sie Ihre Nationalität",
+    "age": "Alter",
+    "agePlaceholder": "Geben Sie Ihr Alter ein",
+    "tourOperator": "Wie haben Sie gebucht?",
+    "tourOperatorOptions": {
+      "travelAgency": "Reisebüro",
+      "onlineWebsite": "Online-Website",
+      "directHotel": "Direkt beim Hotel"
+    },
+    "roomNumber": "Zimmernummer",
+    "roomNumberPlaceholder": "Geben Sie Ihre Zimmernummer ein"
+  },
+  "serviceRating": {
+    "rateService": "Wie bewerten Sie diesen Service?",
+    "comments": "Kommentare (Optional)",
+    "commentsPlaceholder": "Teilen Sie Ihre Gedanken zu diesem Service mit..."
+  },
+  "services": {
+    "reception": "Empfang & Rezeption",
+    "room": "Zimmer",
+    "roomQuality": "Qualität",
+    "roomComfort": "Komfort",
+    "restaurantMain": "Hauptrestaurant",
+    "restaurantMainService": "Service",
+    "restaurantMainQuality": "Essensqualität",
+    "restaurantBarbecue": "Barbecue-Restaurant",
+    "restaurantBarbecueService": "Service",
+    "restaurantBarbecueQuality": "Essensqualität",
+    "restaurantInternational": "Internationales und Tunesisches Restaurant",
+    "restaurantInternationalService": "Service",
+    "restaurantInternationalQuality": "Essensqualität",
+    "animationDay": "Animation: Tagesaktivitäten",
+    "animationEvening": "Animation: Abendunterhaltung",
+    "bar": "Bar",
+    "pool": "Schwimmbad",
+    "spa": "Spa",
+    "cleanliness": "Sauberkeit"
+  },
+  "additionalQuestions": {
+    "title": "Zusätzliches Feedback",
+    "recommend": "Würden Sie dieses Hotel anderen empfehlen?",
+    "visitAgain": "Planen Sie, uns wieder zu besuchen?",
+    "overallRating": "Auf einer Skala von 0 bis 10, welche Gesamtbewertung würden Sie für Ihren Aufenthalt geben?",
+    "overallRatingDescription": "(0 = Sehr unzufrieden / 10 = Ausgezeichneter Aufenthalt)",
+    "suggestions": "Haben Sie Verbesserungsvorschläge?",
+    "suggestionsPlaceholder": "Bitte teilen Sie Vorschläge oder zusätzliches Feedback mit..."
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "home": "Startseite",
+    "step": "Schritt {{current}} von {{total}}",
+    "toggleTheme": "Thema wechseln",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "thankYou": {
+    "title": "Vielen Dank für Ihr Feedback!",
+    "message": "Wir danken Ihnen, dass Sie sich die Zeit genommen haben, Ihre Erfahrung mit uns zu teilen. Ihr Feedback hilft uns, unsere Dienstleistungen zu verbessern.",
+    "newFeedback": "Eine weitere Bewertung abgeben"
+  },
+  "alreadySubmitted": {
+    "title": "Feedback bereits eingereicht",
+    "message": "Sie haben Ihr Feedback bereits innerhalb der letzten 24 Stunden eingereicht. Vielen Dank für Ihre Teilnahme!",
+    "expiry": "Sie können nach 24 Stunden seit Ihrer vorherigen Einreichung eine weitere Bewertung abgeben."
+  },
+  "validation": {
+    "fullNameRequired": "Vollständiger Name ist erforderlich",
+    "nationalityRequired": "Nationalität ist erforderlich",
+    "ageRequired": "Alter ist erforderlich",
+    "ageInvalid": "Alter muss eine Zahl sein",
+    "ageMin": "Sie müssen mindestens 18 Jahre alt sein",
+    "ageMax": "Alter kann 120 nicht überschreiten",
+    "tourOperatorRequired": "Bitte wählen Sie mindestens eine Option",
+    "roomNumberRequired": "Zimmernummer ist erforderlich",
+    "recommendRequired": "Bitte beantworten Sie, ob Sie uns empfehlen würden",
+    "recommendInvalid": "Ungültige Antwort",
+    "visitAgainRequired": "Bitte beantworten Sie, ob Sie planen, wieder zu kommen",
+    "visitAgainInvalid": "Ungültige Antwort",
+    "ratingRequired": "Bitte geben Sie eine Bewertung ab",
+    "overallRatingRequired": "Bitte geben Sie eine Gesamtbewertung ab"
+  }
+}
