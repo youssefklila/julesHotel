@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
     }
 
     const result = await query(GET_ALL_VOTING_SESSIONS);
-    const votingSessions: VotingSession[] = result.rows.map(session => ({
+    const votingSessions: VotingSession[] = result.map(session => ({
       ...session,
       votingUrl: `/vote/${session.unique_link_slug}`,
       qrCodeUrl: `/vote/${session.unique_link_slug}`,
