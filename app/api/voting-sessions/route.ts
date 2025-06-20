@@ -102,6 +102,10 @@ export async function POST(request: NextRequest) {
 
     // Get user ID from username
     const userResult = await query(GET_USER_ID_BY_USERNAME, [username]);
+    if (!userResult) {
+      console.error('Database query for user ID returned undefined.');
+      return NextResponse.json({ error: 'Database query failed to return a result for user.' }, { status: 500 });
+    }
     if (userResult.rows.length === 0) {
       return NextResponse.json({ error: 'User not found in database' }, { status: 403 });
     }
