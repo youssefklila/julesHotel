@@ -11,91 +11,105 @@ import { motion } from "framer-motion"
 import { format, differenceInSeconds } from "date-fns"
 import VotingForm from "@/components/voting/voting-form"
 
-interface VotingSession {
-  id: string
-  title: string
-  description?: string
-  duration: number
-  startTime?: Date
-  endTime?: Date
-  status: "draft" | "active" | "completed" | "paused"
-  qrCode: string
-  votingUrl: string
-  votes: any[]
-  createdAt: Date
+// Use the VotingSession interface from schema, assuming it's compatible or adjust as needed
+// For this refactor, we'll redefine a local one that matches API response and page needs.
+interface PageVotingSession {
+  id: string;
+  title: string;
+  description?: string;
+  duration_minutes: number; // API returns duration_minutes
+  start_time?: string; // ISO string
+  end_time?: string; // ISO string
+  status: "draft" | "active" | "completed" | "paused" | "expired" | "pending_start"; // Add API specific statuses
+  // qrCode and votingUrl are not directly used on this page from session object itself
+  // votes array is not returned by the new API endpoint for a single session
+  created_at: string; // ISO string
+  // Add other fields if returned by API and needed by the page
 }
 
 export default function VotePage() {
-  const params = useParams()
-  const router = useRouter()
-  const [session, setSession] = useState<VotingSession | null>(null)
-  const [timeRemaining, setTimeRemaining] = useState<number>(0)
-  const [isExpired, setIsExpired] = useState(false)
-  const [hasVoted, setHasVoted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const params = useParams();
+  const router = useRouter();
+  const [session, setSession] = useState<PageVotingSession | null>(null);
+  const [timeRemaining, setTimeRemaining] = useState<number>(0);
+  const [isExpired, setIsExpired] = useState(false); // This might be redundant if API status is 'expired'
+  const [hasVoted, setHasVoted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [sessionTitleFromError, setSessionTitleFromError] = useState<string | null>(null);
+
+  const slug = params.sessionId as string;
 
   useEffect(() => {
-    const sessionId = params.sessionId as string
-
-    // Load session data
-    const savedSessions = JSON.parse(localStorage.getItem("votingSessions") || "[]")
-    const foundSession = savedSessions.find((s: VotingSession) => s.id === sessionId)
-
-    if (!foundSession) {
-      setIsLoading(false)
-      return
+    if (!slug) {
+      setIsLoading(false);
+      setErrorMessage("No session identifier provided.");
+      return;
     }
 
-    // Convert date strings back to Date objects
-    if (foundSession.startTime) foundSession.startTime = new Date(foundSession.startTime)
-    if (foundSession.endTime) foundSession.endTime = new Date(foundSession.endTime)
-    if (foundSession.createdAt) foundSession.createdAt = new Date(foundSession.createdAt)
+    const fetchSessionDetails = async () => {
+      setIsLoading(true);
+      setErrorMessage(null);
+      setSessionTitleFromError(null);
 
-    setSession(foundSession)
-    setIsLoading(false)
+      try {
+        const response = await fetch(`/api/voting-sessions/slug/${slug}`);
+        const data = await response.json();
 
-    // Check if user has already voted
-    const userVote = localStorage.getItem(`vote-${sessionId}`)
-    if (userVote) {
-      setHasVoted(true)
-    }
-
-    // Real-time session status checking
-    const statusInterval = setInterval(() => {
-      const currentSessions = JSON.parse(localStorage.getItem("votingSessions") || "[]")
-      const currentSession = currentSessions.find((s: VotingSession) => s.id === sessionId)
-
-      if (currentSession && currentSession.status !== foundSession.status) {
-        // Convert date strings back to Date objects
-        if (currentSession.startTime) currentSession.startTime = new Date(currentSession.startTime)
-        if (currentSession.endTime) currentSession.endTime = new Date(currentSession.endTime)
-        if (currentSession.createdAt) currentSession.createdAt = new Date(currentSession.createdAt)
-
-        setSession(currentSession)
+        if (response.ok) {
+          // Dates are already ISO strings from the API
+          setSession(data);
+          // Check if user has already voted for this session ID (data.id)
+          if (localStorage.getItem(`vote-${data.id}`)) {
+            setHasVoted(true);
+          }
+        } else {
+          setErrorMessage(data.message || "Failed to load session details.");
+          if(data.sessionTitle) setSessionTitleFromError(data.sessionTitle);
+          // Update session status based on API error if needed for UI
+          if (data.status) {
+            setSession(prev => prev ? {...prev, status: data.status, title: data.sessionTitle || prev.title } : { status: data.status, title: data.sessionTitle } as any);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching session details:", error);
+        setErrorMessage("An error occurred while trying to load the session.");
+      } finally {
+        setIsLoading(false);
       }
-    }, 2000) // Check every 2 seconds
+    };
 
-    return () => clearInterval(statusInterval)
-  }, [params.sessionId])
+    fetchSessionDetails();
+  }, [slug]);
 
   useEffect(() => {
-    if (!session || !session.endTime || session.status !== "active") return
+    if (!session || !session.end_time || session.status !== "active") {
+      setTimeRemaining(0);
+      if (session && (session.status === "completed" || session.status === "expired")) {
+        setIsExpired(true);
+      }
+      return;
+    }
+
+    const endTimeDate = new Date(session.end_time);
 
     const timer = setInterval(() => {
-      const now = new Date()
-      const remaining = differenceInSeconds(session.endTime!, now)
+      const now = new Date();
+      const remaining = differenceInSeconds(endTimeDate, now);
 
       if (remaining <= 0) {
-        setIsExpired(true)
-        setTimeRemaining(0)
-        clearInterval(timer)
+        setIsExpired(true); // Local state for UI reactivity before potential API update
+        setTimeRemaining(0);
+        setSession(prev => prev ? {...prev, status: "expired" } : null); // Update local status
+        clearInterval(timer);
       } else {
-        setTimeRemaining(remaining)
+        setIsExpired(false);
+        setTimeRemaining(remaining);
       }
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [session])
+    return () => clearInterval(timer);
+  }, [session]);
 
   const formatTimeRemaining = (seconds: number) => {
     const minutes = Math.floor(seconds / 60)
@@ -104,12 +118,14 @@ export default function VotePage() {
   }
 
   const getProgressPercentage = () => {
-    if (!session || !session.startTime || !session.endTime) return 0
-
-    const totalDuration = differenceInSeconds(session.endTime, session.startTime)
-    const elapsed = totalDuration - timeRemaining
-    return Math.max(0, Math.min(100, (elapsed / totalDuration) * 100))
-  }
+    if (!session || !session.start_time || !session.end_time || session.status !== 'active') return 0;
+    const startTimeDate = new Date(session.start_time);
+    const endTimeDate = new Date(session.end_time);
+    const totalDuration = differenceInSeconds(endTimeDate, startTimeDate);
+    if (totalDuration <= 0) return 0; // Avoid division by zero or negative duration
+    const elapsed = totalDuration - timeRemaining;
+    return Math.max(0, Math.min(100, (elapsed / totalDuration) * 100));
+  };
 
   if (isLoading) {
     return (
@@ -122,94 +138,54 @@ export default function VotePage() {
     )
   }
 
-  if (!session) {
+  // Handle API error messages or session not found
+  if (!isLoading && (errorMessage || !session)) {
+    let title = "Error";
+    let icon = <XCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />;
+    let displayedMessage = errorMessage || "The voting session could not be loaded.";
+    let sessionTitleBadge = sessionTitleFromError || (session?.title);
+
+    if (session?.status === "draft" || session?.status === "pending_start") {
+      title = "Session Not Started";
+      icon = <Timer className="h-16 w-16 text-yellow-500 mx-auto mb-4" />;
+      displayedMessage = errorMessage || "This voting session hasn't started yet. Please wait for the restaurant staff to begin the session.";
+    } else if (session?.status === "paused") {
+      title = "Session Paused";
+      icon = <Timer className="h-16 w-16 text-yellow-500 mx-auto mb-4" />;
+      displayedMessage = errorMessage || "This voting session is temporarily paused. Please wait for it to resume.";
+    } else if (session?.status === "completed" || session?.status === "expired") {
+      title = "Voting Closed";
+      icon = <XCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />;
+      displayedMessage = errorMessage || "This voting session has ended. Thank you for your interest in providing feedback.";
+    }
+
+
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md">
           <Card className="text-center">
             <CardContent className="pt-6">
-              <XCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Session Not Found</h2>
-              <p className="text-muted-foreground mb-4">
-                The voting session you're looking for doesn't exist or has been removed.
-              </p>
-              <Button onClick={() => router.push("/")} variant="outline">
+              {icon}
+              <h2 className="text-xl font-semibold mb-2">{title}</h2>
+              <p className="text-muted-foreground mb-4">{displayedMessage}</p>
+              {sessionTitleBadge && <Badge variant="outline" className="mb-4">{sessionTitleBadge}</Badge>}
+              {session?.status === "completed" || session?.status === "expired" ? (
+                <p className="text-sm text-muted-foreground">
+                  Session ended at {session.end_time ? format(new Date(session.end_time), "HH:mm, MMM dd") : "N/A"}
+                </p>
+              ) : null}
+              <Button onClick={() => router.push("/")} variant="outline" className="mt-4">
                 Go Home
               </Button>
             </CardContent>
           </Card>
         </motion.div>
       </div>
-    )
+    );
   }
 
-  if (session.status === "draft") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md">
-          <Card className="text-center">
-            <CardContent className="pt-6">
-              <Timer className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Session Not Started</h2>
-              <p className="text-muted-foreground mb-4">
-                This voting session hasn't started yet. Please wait for the restaurant staff to begin the session.
-              </p>
-              <Badge variant="outline" className="mb-4">
-                {session.title}
-              </Badge>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    )
-  }
-
-  if (session.status === "paused") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md">
-          <Card className="text-center">
-            <CardContent className="pt-6">
-              <Timer className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Session Paused</h2>
-              <p className="text-muted-foreground mb-4">
-                This voting session is temporarily paused. Please wait for it to resume.
-              </p>
-              <Badge variant="outline" className="mb-4">
-                {session.title}
-              </Badge>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    )
-  }
-
-  if (session.status === "completed" || isExpired) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md">
-          <Card className="text-center">
-            <CardContent className="pt-6">
-              <XCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Voting Closed</h2>
-              <p className="text-muted-foreground mb-4">
-                This voting session has ended. Thank you for your interest in providing feedback.
-              </p>
-              <Badge variant="outline" className="mb-4">
-                {session.title}
-              </Badge>
-              <p className="text-sm text-muted-foreground">
-                Session ended at {session.endTime ? format(session.endTime, "HH:mm") : "N/A"}
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    )
-  }
-
-  if (hasVoted) {
+  // This check must come after error/loading checks, and uses session.id
+  if (session && localStorage.getItem(`vote-${session.id}`)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md">
@@ -255,11 +231,11 @@ export default function VotePage() {
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <p className="text-sm text-muted-foreground">Session Duration</p>
-                    <p className="font-medium">{session.duration} minutes</p>
+                    <p className="font-medium">{session.duration_minutes} minutes</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Votes Collected</p>
-                    <p className="font-medium">{session.votes.length}</p>
+                    <p className="text-sm text-muted-foreground">Status</p>
+                    <p className="font-medium capitalize">{session.status}</p>
                   </div>
                 </div>
               </div>
