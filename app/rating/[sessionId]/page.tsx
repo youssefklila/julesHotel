@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import LanguageSelector from "@/components/language-selector"
+import { Button } from "@/components/ui/button";
 
 export default function RatingSessionPage() {
   const router = useRouter()
@@ -11,55 +12,90 @@ export default function RatingSessionPage() {
   const [isValidSession, setIsValidSession] = useState<boolean | null>(null)
   const sessionId = params.sessionId as string
 
-  useEffect(() => {
-    // Check if this is a valid session ID
-    const checkSession = async () => {
-      try {
-        // Get stored sessions from localStorage
-        const storedSessions = JSON.parse(localStorage.getItem("votingSessions") || "[]")
-        
-        // Find the session with this ID
-        const session = storedSessions.find((s: any) => 
-          s.id === sessionId || s.id === `session-${sessionId}`
-        )
-        
-        if (session) {
-          // Valid session, show language selector
-          setIsValidSession(true)
-        } else {
-          // Invalid session, redirect to home
-          setIsValidSession(false)
-          router.push("/")
-        }
-      } catch (error) {
-        console.error("Error checking session:", error)
-        setIsValidSession(false)
-        router.push("/")
-      }
-    }
-    
-    checkSession()
-  }, [sessionId, router])
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  // sessionId from params is actually the unique_link_slug
+  const slug = params.sessionId as string;
 
-  // Show loading state while checking session
-  if (isValidSession === null) {
+  useEffect(() => {
+    if (!slug) {
+      setIsLoading(false);
+      setError("No session identifier provided.");
+      router.push("/"); // Or a dedicated error page
+      return;
+    }
+
+    const verifySessionSlug = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`/api/verify-vote-link/${slug}`);
+        const data = await response.json();
+
+        if (response.ok && data.isValid) {
+          setIsValidSession(true);
+          // Optionally, you could store session.title from data if needed by LanguageSelector or subsequent pages
+          // For example, pass it via query params to the next step if LanguageSelector redirects
+        } else {
+          setIsValidSession(false);
+          setError(data.error || "Invalid or expired session.");
+          // Redirect to home or a more specific error page based on status
+          // For now, keeping the redirect to home for simplicity on error
+          router.push("/");
+        }
+      } catch (err) {
+        console.error("Error verifying session slug:", err);
+        setIsValidSession(false);
+        setError("Failed to verify session. Please try again later.");
+        router.push("/"); // Redirect on catch
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    verifySessionSlug();
+  }, [slug, router]);
+
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4">
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-          </div>
-          <p className="text-muted-foreground">Validating session...</p>
+          <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Validating voting session...</p>
         </div>
       </div>
-    )
+    );
   }
 
-  // If session is valid, show the language selector
+  if (error && !isValidSession) {
+    // This state might be brief due to router.push("/") in useEffect's error handling.
+    // However, it's good practice to have a distinct UI for it.
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30">
+        <div className="text-center p-8 bg-card shadow-xl rounded-lg">
+          <h2 className="text-xl font-semibold text-destructive mb-4">Session Invalid</h2>
+          <p className="text-muted-foreground mb-6">{error}</p>
+          <Button onClick={() => router.push("/")}>Go to Homepage</Button>
+        </div>
+      </div>
+    );
+  }
+
   if (isValidSession) {
-    return <LanguageSelector />
+    // If LanguageSelector needs session details like title or ID,
+    // they should be passed, possibly by fetching them again or if verify-vote-link returns them.
+    // The current verify-vote-link returns { isValid: true, title: session.title, id: session.id }
+    // We could pass these to LanguageSelector if needed, or it can make its own query.
+    // For now, just rendering LanguageSelector as it was.
+    return <LanguageSelector />;
   }
 
-  // This should not be visible as we redirect on invalid sessions
-  return null
+  // Fallback, though ideally, should not be reached if logic is correct
+  // as other states (loading, error, valid) are handled.
+  // Or if router.push has already initiated a redirect.
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <p>Redirecting...</p>
+    </div>
+  );
 }

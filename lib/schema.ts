@@ -27,6 +27,20 @@ export interface Review {
   suggestions?: string;
 }
 
+export interface VotingSession {
+  id: string;
+  title: string;
+  description?: string;
+  duration_minutes: number;
+  status: 'draft' | 'active' | 'paused' | 'completed' | 'expired';
+  start_time?: string;
+  end_time?: string;
+  unique_link_slug: string;
+  created_at: string;
+  updated_at: string;
+  created_by?: string;
+}
+
 // SQL to create the users table
 export const CREATE_USERS_TABLE = `
 CREATE TABLE IF NOT EXISTS users (
@@ -60,6 +74,75 @@ CREATE TABLE IF NOT EXISTS reviews (
   created_by UUID REFERENCES users(id) ON DELETE SET NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+`;
+
+// SQL to create the voting_sessions table
+export const CREATE_VOTING_SESSIONS_TABLE = `
+CREATE TABLE IF NOT EXISTS voting_sessions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description TEXT,
+  duration_minutes INTEGER NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'active', 'paused', 'completed', 'expired')),
+  start_time TIMESTAMP WITH TIME ZONE,
+  end_time TIMESTAMP WITH TIME ZONE,
+  unique_link_slug TEXT UNIQUE NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  created_by UUID REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_voting_sessions_unique_link_slug ON voting_sessions(unique_link_slug);
+`;
+
+// SQL to get user ID by username
+export const GET_USER_ID_BY_USERNAME = `
+SELECT id FROM users WHERE username = $1;
+`;
+
+// SQL to insert a new voting session
+export const INSERT_VOTING_SESSION = `
+INSERT INTO voting_sessions (
+  title, description, duration_minutes, status, start_time, end_time, unique_link_slug, created_by
+) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+RETURNING *;
+`;
+
+// SQL to get all voting sessions
+export const GET_ALL_VOTING_SESSIONS = `
+SELECT * FROM voting_sessions ORDER BY created_at DESC;
+`;
+
+// SQL to get a voting session by ID
+export const GET_VOTING_SESSION_BY_ID = `
+SELECT * FROM voting_sessions WHERE id = $1;
+`;
+
+// SQL to get a voting session by unique_link_slug
+export const GET_VOTING_SESSION_BY_SLUG = `
+SELECT id, title, description, duration_minutes, status, start_time, end_time, unique_link_slug, created_at, created_by
+FROM voting_sessions
+WHERE unique_link_slug = $1;
+`;
+
+// SQL to update a voting session
+export const UPDATE_VOTING_SESSION = `
+UPDATE voting_sessions
+SET
+  title = COALESCE($2, title),
+  description = COALESCE($3, description),
+  duration_minutes = COALESCE($4, duration_minutes),
+  status = COALESCE($5, status),
+  start_time = COALESCE($6, start_time),
+  end_time = COALESCE($7, end_time),
+  updated_at = NOW()
+WHERE id = $1
+RETURNING *;
+`;
+
+// SQL to delete a voting session by ID
+export const DELETE_VOTING_SESSION_BY_ID = `
+DELETE FROM voting_sessions WHERE id = $1 RETURNING id;
 `;
 
 // SQL to insert a new user
@@ -181,6 +264,9 @@ ${CREATE_USERS_TABLE}
 
 -- Create reviews table if not exists
 ${CREATE_REVIEWS_TABLE}
+
+-- Create voting_sessions table if not exists
+${CREATE_VOTING_SESSIONS_TABLE}
 
 -- Create default admin and superadmin users if they don't exist
 INSERT INTO users (id, username, password, role, is_active, created_by, created_at)
