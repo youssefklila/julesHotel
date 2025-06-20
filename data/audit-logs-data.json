@@ -418,5 +418,26 @@
     "user": "youssef",
     "timestamp": "2025-06-20T13:45:01.236Z",
     "details": "Created voting session: testing (30 minutes) - Auto-started"
+  },
+  {
+    "id": "audit-1750432647740",
+    "action": "SUPER_ADMIN_LOGIN",
+    "user": "youssef",
+    "timestamp": "2025-06-20T15:17:27.740Z",
+    "details": "Super Admin logged in successfully"
+  },
+  {
+    "id": "audit-1750432661980",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-20T15:17:41.980Z",
+    "details": "Accessed Super Admin dashboard"
+  },
+  {
+    "id": "audit-1750432664130",
+    "action": "DASHBOARD_ACCESS",
+    "user": "youssef",
+    "timestamp": "2025-06-20T15:17:44.130Z",
+    "details": "Accessed Super Admin dashboard"
   }
 ]
