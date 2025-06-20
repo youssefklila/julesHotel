@@ -104,6 +104,13 @@ export async function POST(request: NextRequest) {
         name: 'superAdminAuth',
         value: 'true',
       });
+      // Add this part to set superAdminUser cookie
+      response.cookies.set({
+        ...cookieOptions,
+        name: 'superAdminUser',
+        value: user.username,
+        httpOnly: true, // Explicitly set httpOnly for security, as it's read server-side
+      });
     }
     
     return response;
